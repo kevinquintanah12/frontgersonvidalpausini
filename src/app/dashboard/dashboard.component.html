@@ -1,0 +1,85 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  
+  
+  <!-- Content -->
+  <div class="content">
+  
+      <section class="headers-list">
+          <div class="actions-container">
+              <button class="action-button create" (click)="onCreateNew()">Crear</button>
+              <button class="action-button edit" (click)="onEdit()">Editar</button>
+          </div>
+  
+          <table>
+              <thead>
+                  <tr>
+                      <th>Nombre</th>
+                      <th>Foto</th>
+                      <th>Descripción</th>
+                      <th>Email</th>
+                      <th>Teléfono</th>
+                      <th>Ubicación</th>
+                      <th>GitHub</th>
+                      <th>Acciones</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let header of headers">
+                      <td>{{ header.name }}</td>
+                      <td>
+                          <img 
+                              *ngIf="header.imageUrl" 
+                              [src]="header.imageUrl" 
+                              alt="Foto de {{ header.name }}" 
+                              class="profile-thumbnail" 
+                          />
+                      </td>
+                      <td>{{ header.description }}</td>
+                      <td>{{ header.email }}</td>
+                      <td>{{ header.phoneNumber || 'N/A' }}</td>
+                      <td>{{ header.location || 'N/A' }}</td>
+                      <td>
+                          <a *ngIf="header.github" [href]="header.github" target="_blank">
+                              Ver Perfil
+                          </a>
+                      </td>
+                      <td>
+                          <button class="action-button delete" (click)="onDelete(header.id)">Eliminar</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </section>
+  
+      <!-- Work Experience -->
+      <section class="work-experience">
+          <h3>Experiencia Laboral</h3>
+          <div *ngIf="workExperiences.length > 0; else noExperience" class="jobs">
+              <div *ngFor="let experience of workExperiences" class="job">
+                  <h4>{{ experience.role }}</h4>
+                  <h4>{{ experience.company }}</h4>
+
+                  <h4>{{ experience.accomplishments }} </h4>
+                  <h4>{{ experience.startDate | date:'MM/yyyy' }} - {{ experience.endDate ? (experience.endDate | date:'MM/yyyy') : 'Actualidad' }}</h4>
+                  <h4>{{ experience.location }} </h4>
+
+                  <ul>
+                      <li *ngFor="let accomplishment of experience.accomplishments">{{ accomplishment }}</li>
+                  </ul>
+                  <div class="actions">
+                      <button class="action-button edit" (click)="onEditExperience(experience.idWorkExperience)">Editar</button>
+                      <button class="action-button delete" (click)="onDeleteExperience(experience.id)">Eliminar</button>
+                  </div>
+              </div>
+          </div>
+          <ng-template #noExperience>
+              <p>No tienes experiencias laborales. ¿Quieres añadir una nueva?</p>
+          </ng-template>
+
+          <div class="create-new">
+              <button class="action-button create" (click)="onCreateExperience()">Crear Nuevo</button>
+          </div>
+      </section>
+  </div>
+</div>
