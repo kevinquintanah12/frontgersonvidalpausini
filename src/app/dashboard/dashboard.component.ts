@@ -41,20 +41,7 @@ export class DashboardComponent implements OnInit {
     }
 
     // Obtener datos del usuario actual
-    this.userService.getCurrentUser(this.token).subscribe(
-      (response: any) => {
-        if (response && response.data && response.data.currentUser) {
-          this.currentUser = response.data.currentUser; // Asigna los datos del usuario actual
-          console.log('Usuario actual:', this.currentUser);
-        } else {
-          console.error('No se encontraron datos del usuario.');
-        }
-      },
-      (error) => {
-        console.error('Error al obtener los datos del usuario:', error);
-        alert('Hubo un error al cargar el perfil del usuario.');
-      }
-    );
+    
 
 
 

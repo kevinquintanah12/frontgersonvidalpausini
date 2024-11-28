@@ -3,9 +3,17 @@
   display: flex;
   height: 100vh;
   font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
 }
 
-
+/* Contenido principal */
+.content {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background-color: hsl(209, 100%, 77%);
+}
 
 /* Estilo para las acciones fuera de la tabla */
 .actions-container {
@@ -15,52 +23,210 @@
   margin-bottom: 15px;
 }
 
-.action-button {
-  font-size: 14px;
-  padding: 6px 12px;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
+
+.action-link i {
+  margin-right: 5px;
+  font-size: 16px;
 }
 
-.action-button:hover {
-  background-color: #ffffff;
-}
-
-/* Tabla estilo básico */
+/* Estilo de tabla tipo Excel */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: #0f9115;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 table th,
 table td {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 12px 15px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  color: #5fe4b8;
 }
 
+table th {
+  background-color: #baf0cc;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #666;
+  letter-spacing: 0.5px;
+}
 
+table tbody tr:hover {
+  background-color: #208f12;
+}
+.action-link {
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #007bff;
+}
 
+.action-link:hover {
+  color: #0056b3;
+}
+
+.action-link.edit {
+  color: #28a745;
+}
+
+.action-link.create {
+  color: #ffc107;
+}
+
+.action-link.delete {
+  color: #dc3545;
+}
+
+table tbody tr td:first-child {
+  font-weight: bold;
+  color: #000;
+}
+
+table tbody tr td {
+  word-break: break-word;
+}
 
 /* Imagen dentro de la tabla */
 .profile-thumbnail {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* Mensaje cuando no hay experiencias */
-p {
-  text-align: center;
-  color: #888;
+/* Acciones en las filas de la tabla */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  border: none;
+  background-color: #e2e2e2;
+  cursor: pointer;
+  padding: 5px;
+  color: #333;
+}
+
+.actions button:hover {
+  background-color: #c7c7c7;
+  transform: scale(1.05);
+}
+
+.actions .edit:before {
+  content: "\f044"; /* Font Awesome edit icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.actions .delete:before {
+  content: "\f1f8"; /* Font Awesome trash icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1.2rem;
 }
 
 /* Botón crear nuevo */
 .create-new {
-  text-align: center;
   margin-top: 20px;
+  text-align: center;
 }
 
+.create-new button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.create-new button:before {
+  content: "\f067"; /* Font Awesome plus icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.create-new button:hover {
+  background-color: #0056b3;
+}
+
+/* Mensaje sin experiencia */
+.no-experience {
+  text-align: center;
+  color: #888;
+  font-size: 1rem;
+}
+
+/* Estilos de impresión */
+@media print {
+  body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+  }
+
+  .cv-container {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 800px;
+      color: #333;
+  }
+
+  header {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  header h1 {
+      font-size: 24px;
+      margin: 0;
+  }
+
+  header p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+  }
+
+  section h2 {
+      font-size: 18px;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+  }
+
+  section h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+  }
+
+  section p,
+  section ul {
+      font-size: 14px;
+      margin: 0 0 10px;
+  }
+
+  section ul {
+      padding-left: 20px;
+  }
+
+  section ul li {
+      margin-bottom: 5px;
+  }
+
+  /* Oculta los botones y otros elementos que no son parte del CV */
+  button,
+  .no-print {
+      display: none;
+  }
+}
