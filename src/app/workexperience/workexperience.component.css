@@ -14,20 +14,6 @@ body {
     max-width: 800px;
   }
   
-  .cv-form {
-    background: white;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 80%;
-    right: 8.5%;
-    top: 200%;
-    top: 20%;
-  
-    position:absolute;
-  
-    margin-bottom: 20px;
-  }
   
   .cv-form h2 {
     margin-bottom: 20px;
